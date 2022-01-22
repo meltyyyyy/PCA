@@ -1,3 +1,3 @@
 # PCA
 
-Unsupervised learning based onn Principal Component Analysis
+Unsupervised learning based on Principal Component Analysis
