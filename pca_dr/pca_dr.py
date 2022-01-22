@@ -26,3 +26,7 @@ def execute():
     plt.xlabel('First principal component')
     plt.ylabel('Second principal component')
     plt.savefig('pca_dr/pca_dr.png')
+
+    print("PCA component shape: {}".format(pca.components_.shape))
+    print("PCA components:\n{}".format(pca.components_))
+
