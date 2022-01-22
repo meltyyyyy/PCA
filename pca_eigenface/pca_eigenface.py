@@ -50,7 +50,7 @@ def execute():
     print("pca.components_.shape: {}".format(pca.components_.shape))
 
     fig, axes = plt.subplots(3, 5, figsize=(15, 12), subplot_kw={'xticks': (), 'yticks': ()})
-    for i, (component,ax) in enumerate(zip(pca.components_,axes.ravel())):
-        ax.imshow(component.reshape(image_shape),cmap='viridis')
-        ax.set_title("{}. component".format((i+1)))
+    for i, (component, ax) in enumerate(zip(pca.components_, axes.ravel())):
+        ax.imshow(component.reshape(image_shape), cmap='viridis')
+        ax.set_title("{}. component".format((i + 1)))
     fig.savefig("pca_eigenface/1-nn_with_pca.png")
