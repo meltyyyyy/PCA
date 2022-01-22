@@ -1,4 +1,5 @@
 import matplotlib.pyplot as plt
+import numpy as np
 from sklearn.datasets import fetch_lfw_people
 
 
@@ -14,3 +15,10 @@ def execute():
 
     print('people.images.shape: {}'.format(people.images.shape))
     print('Number of classes: {}'.format(len(people.target_names)))
+
+    counts = np.bincount(people.target)
+    for i, (count,name) in enumerate(zip(counts,people.target_names)):
+        print("{0:25} {1:3}".format(name,count),end='  ')
+        if(i + 1) % 3 == 0:
+            print()
+
