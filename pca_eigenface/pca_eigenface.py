@@ -22,3 +22,10 @@ def execute():
         if(i + 1) % 3 == 0:
             print()
 
+    mask = np.zeros(people.target.shape,dtype=np.bool)
+    for target in np.unique(people.target):
+        mask[np.where(people.targer==target)[0][:50]] = 1
+
+    X_people = people.data[mask]
+    y_people = people.target[mask]
+    X_people = X_people / 255
