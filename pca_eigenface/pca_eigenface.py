@@ -39,11 +39,18 @@ def execute():
     knn.fit(X_train, y_train)
     print("Test set score of 1-nn: {:.2f}".format(knn.score(X_test, y_test)))
 
-    pca = PCA(n_components=100,whiten=True,random_state=0).fit(X_train)
+    pca = PCA(n_components=100, whiten=True, random_state=0).fit(X_train)
     X_train_pca = pca.transform(X_train)
     X_test_pca = pca.transform(X_test)
     print("X_train_pca.shape: {}".format(X_train_pca.shape))
 
     knn_pca = KNeighborsClassifier(n_neighbors=1)
-    knn_pca.fit(X_train_pca,y_train)
-    print("Test set score of 1-nn with pca: {:.2f}".format(knn_pca.score(X_test_pca,y_test)))
+    knn_pca.fit(X_train_pca, y_train)
+    print("Test set score of 1-nn with pca: {:.2f}".format(knn_pca.score(X_test_pca, y_test)))
+    print("pca.components_.shape: {}".format(pca.components_.shape))
+
+    fig, axes = plt.subplots(3, 5, figsize=(15, 12), subplot_kw={'xticks': (), 'yticks': ()})
+    for i, (component,ax) in enumerate(zip(pca.components_,axes.ravel())):
+        ax.imshow(component.reshape(image_shape),cmap='viridis')
+        ax.set_title("{}. component".format((i+1)))
+    fig.savefig("pca_eigenface/1-nn_with_pca.png")
