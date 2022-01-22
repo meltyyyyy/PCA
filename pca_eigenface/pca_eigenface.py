@@ -44,4 +44,6 @@ def execute():
     X_test_pca = pca.transform(X_test)
     print("X_train_pca.shape: {}".format(X_train_pca.shape))
 
-
+    knn_pca = KNeighborsClassifier(n_neighbors=1)
+    knn_pca.fit(X_train_pca,y_train)
+    print("Test set score of 1-nn with pca: {:.2f}".format(knn_pca.score(X_test_pca,y_test)))
